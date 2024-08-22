@@ -13,8 +13,15 @@
       <h1>회의실 예약</h1>
       <!--form요소는 서버에 데이터를 보내기 위해 작성한 마크업이다.-->
       <form action="데이터를 서버에 보냄"> <!--action쪽에 데이터를 받을 서버의 주소를 작성한다. -->
+        
+        <!--입력 필드들의 그룹 설정-->
+        <fieldset>
+          <legend>일반 정보</legend><!--그룹 제목-->
+        
+        
+        
         <label for="">어떤 용도로 이용하시나요?</label>
-        <select>
+        <select name="subject"><!--name의 역할 중요, 이런형식으로 서버에 전달-->
           <option> 디자이너와의 티타임</option>
           <option>개발자와의 코드리뷰</option>
           <option selected>사장님께 연봉협상</option>
@@ -23,28 +30,37 @@
 
         
         <label >회의실 규묘는 어떠한가요</label>
+        <!--name이 동일하면 같은 데이터라는 뜻-->
         <label><input type="radio" name="size">2-8인</label>
         <label><input type="radio" name="size">9-20인</label>
         <label> <input type="radio" name="size">21-100인</label>
         <hr>
 
         <label>어떤 장비가 필요하시나요</label>
-        <label><input type="checkbox" checked disabled>빔프로젝터</label><!--다중선택 가능-->
+        <label><input type="checkbox" checked >빔프로젝터</label><!--다중선택 가능-->
         <label><input type="checkbox">화이트보드</label>
         <label><input type="checkbox">전등데스크</label>
         <hr>
+      </fieldset>
 
-
+        
+      <fieldset><legend>개인정보</legend>
         <!--label은 입력 필드의 제목이다. (질문을 던지기) -->
         <label for="name">예약자의 성함을 입력하세요</label>
-        <input id="name" type="text" placeholder="성함입력">
+        <input name="username" id="name" type="text" value="김딸기" readonly placeholder="성함입력">
         <!--label에 해당하는 입력 필드이다. 정말 다양한 타입이 존재한다. -->
         <!--label for와 입력 필드의 id값을 동기화 한다. label은 클리커블, 클릭시 입력 필드 focus -->
+        <hr>
+
+        <label for="name">날짜를 입력하세요</label>
+        <input name="date" id="" type="date">
         <hr>
 
         <label for="topic" >회의의 주제를 남겨 주세요</label>
         <textarea id="topic" placeholder="주제에 대한 짧은 요약"></textarea> <!-- placeholder는 사용자에게 입력 받을 데이터의 힌트이다. -->
         <hr>
+
+        </fieldset>
 
         <button type="submit">예약하기</button><!-- button은 실제 데이터를 최종적으로 전송하기위한 장치이다. 보통 엔터를 쳐도 기본 동작된다. -->
       </form>
