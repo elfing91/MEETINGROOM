@@ -1,3 +1,16 @@
+/*reset*/
+fieldset, legend{
+  /*모든 속성을 선택하고 unset함-블록에서 인라인으로 돌아감*/
+  all: unset;
+  /*모든 속성이 초기화되면 위험함, 
+  기본 스타일이 유지되면 좋은 경우도 있음->사용자 에이전트에 관심가져야 함*/
+  display: block;
+}
+
+button{
+  all: unset;
+}
+
 /* CSS Variables */
 :root {
   --font-ko: "Noto Sans KR", sans-serif;
@@ -13,3 +26,4 @@
   padding: 50px;
   box-shadow: inset 0 0 10px gray;
 }
+
