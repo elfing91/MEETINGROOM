@@ -1,0 +1,15 @@
+/* CSS Variables */
+:root {
+  --font-ko: "Noto Sans KR", sans-serif;
+}
+
+/* Typography */
+:root {
+  font-family: var(--font-ko);
+}
+
+.wrapper{
+  margin: 50px;
+  padding: 50px;
+  box-shadow: inset 0 0 10px gray;
+}
