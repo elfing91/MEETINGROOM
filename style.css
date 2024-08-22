@@ -9,7 +9,31 @@ fieldset, legend{
 
 button{
   all: unset;
+  /*all: unset;을 통해 최대한 단순한 버튼 제작->기본제공되는 주요기능들의 시각적 특성이 사라짐, 
+  그러나 html의 고유기능, sumit/focus기능 등은 유지됨*/
+  display: block;
 }
+
+/*input,select는 공공 ui이므로 반복해서 쓰인다
+->따라서 초기화부터 진행하고 다음에 디자인 평준화를 진행한다*/
+input,select{
+  all: unset;
+}
+/*디자인 평준화, 해당 공공 ui를 평준화함*/
+select, input[type="text"], 
+input[type="password"],
+input[type="email"]{
+  display: block;/*block이 되더라도*/
+
+  width: 100%;/*억지로 100% 해야함*/
+  height: 38px;
+  line-height: 38px;
+
+  padding: 0 10px;/*안정적인 텍스트 표현 위해 좌우 패딩*/
+  box-sizing: border-box;/*width에 패딩이 추가되는것을 방지*/
+  box-shadow: inset 0 0 10px red;
+}/*웹사이트 전반에 걸친 인풋 시각적 디자인 평중화*/
+
 
 /* CSS Variables */
 :root {
