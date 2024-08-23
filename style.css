@@ -19,30 +19,43 @@ button{
 input,select{
   all: unset;
 }
+
+
 /*디자인 평준화, 해당 공공 ui를 평준화함*/
 select, input[type="text"], 
 input[type="password"],
 input[type="email"]{
-  display: block;/*block이 되더라도*/
+  display: block;/*block이 되더라도 */
 
   width: 100%;/*억지로 100% 해야함*/
-  height: 38px;
-  line-height: 38px;
 
-  padding: 0 10px;/*안정적인 텍스트 표현 위해 좌우 패딩*/
-  box-sizing: border-box;/*width에 패딩이 추가되는것을 방지*/
-  box-shadow: inset 0 0 10px red;
+  height: var(--input-height);
+  line-height: var(--input-height);/*피그마 디자인 참고해 재조정*/
+
+  padding: 0 var(--input-padding);/*안정적인 텍스트 표현 위해 좌우 패딩*/
+
+  box-sizing: border-box;/*width100%로 인해 너비에 패딩이 추가되는것을 방지*/
 }/*웹사이트 전반에 걸친 인풋 시각적 디자인 평중화*/
 
 
 /* CSS Variables */
-:root {
+:root { /*전역변수-모든 인풋이 가지고 있는 초기의 스타일링*/
   --font-ko: "Noto Sans KR", sans-serif;
+  --input-height:44px;
+  --input-fs:1.4rem;
+  --input-padding:14px;
+
+
 }
 
 /* Typography */
 :root {
   font-family: var(--font-ko);
+
+  font-size: 62.5%;/*기본 폰트 16px의 62.5%->10px*/
+}
+bodt{
+  font-size: 1.4rem;/*14px*/
 }
 
 .wrapper{
@@ -51,3 +64,19 @@ input[type="email"]{
   box-shadow: inset 0 0 10px gray;
 }
 
+.wrapper{
+  max-width: 600px;
+  margin: 100px auto;
+}
+
+/*input[type="text"]를 한번 감쌈, 인풋 스타일을 커스텀 하면 다양한 입력 필드 유형을 소화하기 어렵기 때문에 추가*/
+.field{
+  border: 2px solid #ddd;
+  border-radius: 4px;
+
+}
+.field.type_small{/*지역변수*/
+  --input-height:32px;
+  --input-padding:10px;
+  --input-fs:1.1rem;
+}
