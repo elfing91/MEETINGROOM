@@ -16,13 +16,13 @@ button{
 
 /*input,select는 공공 ui이므로 반복해서 쓰인다
 ->따라서 초기화부터 진행하고 다음에 디자인 평준화를 진행한다*/
-input,select{
+input,select,textarea{
   all: unset;
 }
 
 
 /*디자인 평준화, 해당 공공 ui를 평준화함*/
-select, input[type="text"], 
+select, textarea, input[type="text"], 
 input[type="password"],
 input[type="email"]{
   display: block;/*block이 되더라도 */
@@ -36,6 +36,14 @@ input[type="email"]{
 
   box-sizing: border-box;/*width100%로 인해 너비에 패딩이 추가되는것을 방지*/
 }/*웹사이트 전반에 걸친 인풋 시각적 디자인 평중화*/
+
+textarea{/*textarea의 기본 디자인 재구축*/
+  display: block;
+  width: 100%;
+  padding: var(--input-padding);
+  box-sizing: border-box;
+}
+
 
 
 /* CSS Variables */
@@ -64,16 +72,14 @@ bodt{
   box-shadow: inset 0 0 10px gray;
 }
 
-.wrapper{
-  max-width: 600px;
-  margin: 100px auto;
-}
 
-/*input[type="text"]를 한번 감쌈, 인풋 스타일을 커스텀 하면 다양한 입력 필드 유형을 소화하기 어렵기 때문에 추가*/
-.field{
+/* Commons */
+/* input[type="text"]를 한번 감싸는 역할, input 자체의 스타일을 커스텀을 하면 다양한 입력 필드 유형을 소화하기 어렵기 때문에 추가. */
+.field {
   border: 2px solid #ddd;
   border-radius: 4px;
 
+  transition: all .4s;
 }
 
 .field input:focus{/**/
@@ -84,11 +90,22 @@ bodt{
 /*:has 등장! input:focus되었을 당시의 부모 .field를 선택해 스타일링한다. .field는 div라 :focus되지 않음*/
 .field:has(input:focus){
   border-color: thistle;/**필드 내부의 인풋 스타일 설정*/
-  box-shadow: 0 0 0 6px thistle;
+  box-shadow: 0 0 0 6px rgb(131 208 106 / .25);
+}
+
+.field:focus-within{/*ha는 꿀이지만, 모든 inpu, textarea 등 입력 필드 전체대상으로 focus를 포함시키리면 foxus전용인 :focus-within을 쓰는게 합리적*/
+  border-color: thistle;/**필드 내부의 인풋 스타일 설정*/
+  box-shadow: 0 0 0 6px rgb(131 208 106 / .25);
 }
 
 .field.type_small{/*지역변수: 전역변수값을 사용하지 않고 해당 field.type_small 마크업 내에서 사용되는 지역변수를 만들어 입력창 커스텀*/
   --input-height:32px;
   --input-padding:10px;
   --input-fs:1.1rem;
+}
+
+/* Component */
+.wrapper {
+  max-width: 600px;
+  margin: 100px auto;
 }
