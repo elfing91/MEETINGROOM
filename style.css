@@ -75,7 +75,19 @@ bodt{
   border-radius: 4px;
 
 }
-.field.type_small{/*지역변수*/
+
+.field input:focus{/**/
+ /* background-color: red;/**필드 내부의 인풋 스타일 설정*/
+
+
+}
+/*:has 등장! input:focus되었을 당시의 부모 .field를 선택해 스타일링한다. .field는 div라 :focus되지 않음*/
+.field:has(input:focus){
+  border-color: thistle;/**필드 내부의 인풋 스타일 설정*/
+  box-shadow: 0 0 0 6px thistle;
+}
+
+.field.type_small{/*지역변수: 전역변수값을 사용하지 않고 해당 field.type_small 마크업 내에서 사용되는 지역변수를 만들어 입력창 커스텀*/
   --input-height:32px;
   --input-padding:10px;
   --input-fs:1.1rem;
